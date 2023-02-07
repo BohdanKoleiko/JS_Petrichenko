@@ -13,29 +13,29 @@ P.S. Функции вызывать не обязательно */
 
 export const personalMovieDB = {
    getStarted: function () {
-      let numberMovies = +prompt('Скільки фільмів ви вже подивились?');
+      let numberMovies = +prompt('Скільки фільмів ви вже подивились?').trim();
 
       while (numberMovies == '' || numberMovies == null || isNaN(numberMovies)) {
-         numberMovies = +prompt('Скільки фільмів ви вже подивились?');
+         numberMovies = +prompt('Скільки фільмів ви вже подивились?').trim();
       }
 
-      this.count(numberMovies);
-   },
-   count: function (number) {
-      if (number < 10) {
+      this.count = numberMovies;
+
+      if (numberMovies < 10) {
          alert('Просмотрено довольно мало фильмов');
-      } else if (number <= 30 && number >= 10) {
+      } else if (numberMovies <= 30 && numberMovies >= 10) {
          alert('Вы классический зритель');
       } else {
          alert('Вы киноман');
       }
    },
+   count: null,
    movies: {},
    actors: {},
    genres: [],
    privat: false,
    askAboutMovie: function () {
-      let lastWatchFilm = prompt('Один із останніх переглянутих фільмів?');
+      let lastWatchFilm = prompt('Один із останніх переглянутих фільмів?').trim();
       let filmRating = +prompt('Як його оцінете по 10 бальній шкалі');
 
       if (!lastWatchFilm || !filmRating || lastWatchFilm.length > 50 || filmRating > 10) {

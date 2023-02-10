@@ -34,3 +34,33 @@ function getTimeFromMinutes(item) {
 }
 
 console.log(getTimeFromMinutes(180));
+
+/*
+   2) Напишите функцию, которая принимает в себя 4 числа и возвращает самое большее из них. Если один из аргументов не является числом или их меньше 4 - возвращается 0. Дробные числа разрешены.
+
+   Пример:
+
+   findMaxNumber(1, 5, 6.6, 11); =>  11
+
+   findMaxNumber(1, 5, '6', '10');  =>  0
+*/
+
+function findMaxNumber(item1, item2, item3, item4) {
+   const numArr = [item1, item2, item3, item4];
+   let sum = 0;
+
+   for (let i in numArr) {
+
+      if (typeof numArr[i] === 'string' || !numArr[i]) {
+         return 0;
+      }
+
+      if (sum < numArr[i]) {
+         sum = numArr[i];
+      }
+   }
+
+   return sum;
+}
+
+console.log(findMaxNumber(1, 5, 6, 4));

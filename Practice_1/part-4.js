@@ -63,12 +63,16 @@ export const personalMovieDB = {
 
          this.genres[i] = yourGanre.trim();
       }
+
+      this.genres.forEach(function (arrName, index) {
+         console.log(`Любимый жанр ${index + 1} - это ${arrName}`);
+      })
    },
    toggleVisibleMyDB: function () {
       if (this.privat) {
-         this.privat = true;
-      } else {
          this.privat = false;
+      } else {
+         this.privat = true;
       }
-   }
+   },
 };

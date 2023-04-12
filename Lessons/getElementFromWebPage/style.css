@@ -1,0 +1,77 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+.container {
+   max-width: 1100px;
+   margin: 0 auto;
+   padding-top: 50px;
+}
+
+#squer {
+   width: 100px;
+   height: 100px;
+   background-color: #c5ff33;
+   margin-bottom: 40px
+}
+
+button {
+   outline: none;
+   border: 1px solid #2E333A;
+   background-color: white;
+   cursor: pointer;
+   width: 80px;
+   height: 30px;
+   border-radius: 30px;
+   filter: drop-shadow(3px 3px 2px #2E333A);
+   transition: all ease-in-out 0.2s
+}
+
+button:hover {
+   filter: none;
+}
+
+.circle {
+   width: 100px;
+   height: 100px;
+   border-radius: 100%;
+   background-color: blue;
+}
+
+[class="circle"] {
+   margin-top: 20px;
+}
+
+.wrapper {
+   margin-top: 10px;
+}
+
+.wrapper .heart {
+   display: inline-block;
+   position: relative;
+   width: 135px;
+   height: 110px;
+}
+
+.wrapper .heart::before, .wrapper .heart::after {
+   content: '';
+   width: 100px;
+   height: 65px;
+   background-color: red;
+   position: absolute;
+   top: 18px;
+   border-top-left-radius: 40px; 
+   border-bottom-left-radius: 40px; 
+}
+
+.wrapper .heart::before {
+   transform: rotate(40deg);
+   left: 0;
+}
+
+.wrapper .heart::after {
+   transform: rotate(140deg);
+   right: 0;
+}

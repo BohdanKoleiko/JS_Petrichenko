@@ -1,10 +1,20 @@
 'use strict';
 
+let count = 0;
+
 const box = document.getElementById('squer');
 console.log(box);
 
 const btns = document.getElementsByTagName('button');
-console.log(btns);
+const btnsArr = [...btns];
+btnsArr.forEach((value) => {
+   value.addEventListener('click', () => {
+      if (!isNaN(+value.innerText) && +value.innerText != 0) {
+         count = +value.innerText;
+         console.log(count);
+      }
+   })
+});
 
 const circles = document.getElementsByClassName('circle');
 console.log(circles);
@@ -17,10 +27,12 @@ hearts.forEach((value) => {
    value.style.transition = 'all 0.5s';
 
    value.addEventListener('mouseover', () => {
-      value.style.transform = `rotate(${rotate += 45}deg)`;
+      rotate += 45 * count;
+      value.style.transform = `rotate(${rotate}deg)`;
    });
    value.addEventListener('mouseleave', () => {
-      value.style.transform = `rotate(${rotate += 45}deg)`;
+      rotate += 45 * count;
+      value.style.transform = `rotate(${rotate}deg)`;
    });
 
 });

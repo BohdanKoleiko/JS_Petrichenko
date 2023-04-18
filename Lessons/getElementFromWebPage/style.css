@@ -47,16 +47,16 @@ button:hover {
 
 .wrapper {
    margin-top: 10px;
+   display: flex;
 }
 
-.wrapper .heart {
-   display: inline-block;
+.heart {
    position: relative;
    width: 135px;
    height: 102px;
 }
 
-.wrapper .heart::before, .wrapper .heart::after {
+.heart::before, .heart::after {
    content: '';
    width: 100px;
    height: 65px;
@@ -67,12 +67,22 @@ button:hover {
    border-bottom-left-radius: 40px; 
 }
 
-.wrapper .heart::before {
+.heart::before {
    transform: rotate(40deg);
    left: 0;
 }
 
-.wrapper .heart::after {
+.heart::after {
    transform: rotate(140deg);
    right: 0;
+}
+
+.black {
+   background-color: black;
+   width: 200px;
+   height: 100px;
+   margin-top: 20px;
+   color: white;
+   text-align: center;
+   line-height: 100px;
 }

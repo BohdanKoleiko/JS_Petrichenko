@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Events and Handlers</title>
+   <style>
+      button {
+         width: 100px;
+         height: 60px;
+      }
+      button:not(:last-child) {
+         margin-right: 5px;
+      }
+      div {
+         margin-top: 50px;
+         margin-bottom: 20px;
+      }
+      div#test {
+         min-height: 100vh;
+         width: 100px;
+         background-color: aqua;
+      }
+      .overlay {
+         max-width: 200px;
+         height: 200px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         background-color: aqua;
+      }
+   </style>
+</head>
+<body>
+   <div>
+      <div class="overlay">
+         <button id="btn">1</button>
+      </div>
+      <button>2</button>
+      <button>3</button>
+   </div>
+
+   <a href="https://www.youtube.com/">https://www.youtube.com/</a>
+
+   <div id="test"></div>
+
+   <script src="./main.js"></script>
+</body>
+</html>

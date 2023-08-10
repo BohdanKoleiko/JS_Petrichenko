@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Practice to work with function`s constructor</title>
+
+   <style>
+      h1 {
+         text-align: center;
+      }
+
+      table, th, td {
+         table-layout: fixed;
+         border-collapse: collapse;
+         border: 1px solid rgb(176, 176, 176);
+      }
+
+      table {
+         width: 100%;
+         max-width: 600px;
+         margin-left: auto;
+         margin-right: auto;
+         border-radius: 10px;
+      }
+
+      tbody tr {
+         text-align: center;
+      }
+
+      .add-new-user,
+      .remove-user {
+         width: 5%;
+         cursor: pointer;
+         padding: 5px;
+      }
+
+      .add-new-user img,
+      .remove-user img {
+         height: 100%;
+         width: 70%;
+         display: block;
+         margin: 0 auto;
+      }
+
+      .modal {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      .modal[data-active='false'] {
+         display: none;
+      }
+
+      .modal[data-active='true'] {
+         display: block;
+      }
+
+      .modal__content {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         width: 100%;
+         max-width: 600px;
+         background-color: white;
+         box-shadow: 0px 0px 27px 2px black;
+         border-radius: 5px;
+         padding: 10px 10px 20px;
+      }
+
+      .modal__content h2 {
+         text-align: center;
+      }
+
+      .modal__content form {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         row-gap: 10px;
+      }
+
+      .modal__content form input {
+         width: 300px;
+         outline: none;
+         height: 30px;
+      }
+
+      .modal__content form button {
+         height: 30px;
+         background-color: #488d55;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         padding: 0 10px;
+         color: white;
+      }
+   </style>
+</head>
+<body>
+   <h1>Practice to work with function`s constructor</h1>
+
+   <table>
+      <thead>
+         <tr>
+            <th>Name</th>
+            <th>Nickname</th>
+            <th>Years old</th>
+            <th class="add-new-user">
+               <img src="person-plus.svg" alt="add new user icon">
+            </th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td class="userName">Bohdan</td>
+            <td class="userNikname">HamaHs</td>
+            <td class="years">28</td>
+            <td class="remove-user">
+               <img src="person-delete.svg" alt="remove the user icon">
+            </td>
+         </tr>
+      </tbody>
+   </table>
+
+   <div class="modal" data-active="false">
+      <div class="modal__content">
+         <h2>Add new user</h2>
+
+         <form action="" method="post">
+            <input type="text" id="name" name="name" placeholder="User name" required>
+            <input type="text" id="nickname" name="nikname" placeholder="Nickname" required>
+            <input type="number" id="years" name="years" placeholder="How old are you?" required>
+
+            <button type="submit">Add user</button>
+         </form>
+      </div>
+   </div>
+
+   <script src="script.js"></script>
+</body>
+</html>

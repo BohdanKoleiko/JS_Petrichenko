@@ -32,6 +32,7 @@ const modal = function () {
     html.style.overflow = 'hidden';
     document.addEventListener('keydown', listenBtnAction);
     clearInterval(timerModalID);
+    window.removeEventListener('scroll', showModalByScroll);
   };
   modalOpenBtn.forEach(item => {
     item.addEventListener('click', openModalWindow);
@@ -174,6 +175,87 @@ const timeCounter = function () {
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (timeCounter);
 
+/***/ }),
+
+/***/ "./src/js/use-constructor(classes).js":
+/*!********************************************!*\
+  !*** ./src/js/use-constructor(classes).js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+class MenuCard {
+  /**
+   * 
+   * @param {string} title card's title
+   * @param {string} text description
+   * @param {string} srcImg link to an image
+   * @param {string} altTxt alt text for an image
+   * @param {number} price price
+   * @param {parentElem} parentElem parent element for cards
+   * @param {classes} classes it`s possible to pass as many aditioanal css classes to card`s wrapper if you need that as possible
+   */
+  constructor(title, text, srcImg, altTxt, price, parentElem, ...classes) {
+    this.title = title;
+    this.text = text;
+    this.srcImg = srcImg;
+    this.altTxt = altTxt;
+    this.price = price;
+    this.classes = classes;
+    this.parentElem = document.querySelector(parentElem);
+  }
+  exchangeToUAH() {
+    const APIKey = 'f33b579dee802eeeff591f3e164ca910';
+    const endpoint = 'latest';
+    const HTTPMethod = 'GET';
+    const httpRequest = new XMLHttpRequest();
+    const url = `http://data.fixer.io/api/${endpoint}?access_key=${APIKey}`;
+    let test;
+    httpRequest.open(HTTPMethod, url);
+    httpRequest.responseType = 'json';
+    httpRequest.send();
+    //httpRequest.addEventListener('load', getUAH);
+    //let promice = new Promise(function (resolve, reject) {
+    //   httpRequest.addEventListener('load', function () {
+    //      let newPrice = this.response.rates.UAH
+    //      resolve(newPrice);
+    //   });
+    //});
+    //promice.then(function (data) {
+    //   return data
+    //});
+  }
+
+  render() {
+    if (this.parentElem) {
+      const menuItem = document.createElement('div');
+      if (this.classes.length === 0) {
+        menuItem.classList.add('menu__item');
+      } else {
+        this.classes.forEach(classItem => {
+          menuItem.classList.add(classItem);
+        });
+      }
+      const menuItemContent = `
+            <img src=${this.srcImg} alt=${this.altTxt}>
+            <h3 class="menu__item-subtitle">${this.title}</h3>
+            <div class="menu__item-descr">${this.text}</div>
+            <div class="menu__item-divider"></div>
+            <div class="menu__item-price">
+               <div class="menu__item-cost">Цена:</div>
+               <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+            </div>
+         `;
+      menuItem.innerHTML = menuItemContent;
+      this.parentElem.append(menuItem);
+    }
+  }
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MenuCard);
+
 /***/ })
 
 /******/ 	});
@@ -242,13 +324,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tabs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tabs */ "./src/js/tabs.js");
 /* harmony import */ var _timeCounter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./timeCounter */ "./src/js/timeCounter.js");
 /* harmony import */ var _modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal */ "./src/js/modal.js");
+/* harmony import */ var _use_constructor_classes___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./use-constructor(classes) */ "./src/js/use-constructor(classes).js");
+
+
+
 
 
 
 window.addEventListener("DOMContentLoaded", () => {
   (0,_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])();
   (0,_timeCounter__WEBPACK_IMPORTED_MODULE_1__["default"])();
-  (0,_modal__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  //modal();
+
+  new _use_constructor_classes___WEBPACK_IMPORTED_MODULE_3__["default"]('Меню "Фитнес"', 'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!', 'img/tabs/vegy.jpg', 'vegy', 229, '.menu__field .container').render();
+  new _use_constructor_classes___WEBPACK_IMPORTED_MODULE_3__["default"]('Меню “Премиум”', 'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!', 'img/tabs/elite.jpg', 'elite', 550, '.menu__field .container').render();
+  const menuLean = new _use_constructor_classes___WEBPACK_IMPORTED_MODULE_3__["default"]('Меню "Постное"', 'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.', 'img/tabs/post.jpg', 'lean', 430, '.menu__field .container');
+  menuLean.render();
 });
 })();
 

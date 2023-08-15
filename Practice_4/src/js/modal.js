@@ -23,6 +23,8 @@ const modal = function () {
       html.style.overflow = 'hidden';
       document.addEventListener('keydown', listenBtnAction);
       clearInterval(timerModalID);
+
+      window.removeEventListener('scroll', showModalByScroll);
    }
 
    modalOpenBtn.forEach(item => {

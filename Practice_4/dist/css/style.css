@@ -435,9 +435,10 @@ a {
   padding: 40px 0 50px 0;
 }
 .menu .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(290px, 320px));
   justify-content: space-between;
-  align-items: flex-start;
+  gap: 30px;
 }
 .menu .title {
   text-align: center;
@@ -449,9 +450,12 @@ a {
   background: rgba(249, 254, 126, 0.25);
 }
 .menu__item {
-  width: 320px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
   min-height: 450px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
   font-size: 16px;
   font-weight: 300;
@@ -474,8 +478,9 @@ a {
 .menu__item-divider {
   width: 100%;
   height: 1px;
-  background-color: rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   margin-top: 40px;
+  flex-grow: 1;
 }
 .menu__item-price {
   display: flex;

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>AJAX</title>
+
+   <style>
+      label {
+         display: flex;
+         flex-direction: column;
+         max-width: 200px;
+      }
+
+      label:not(:last-child) {
+         margin-bottom: 20px;
+      }
+
+      label > span {
+         margin-bottom: 5px;
+      }
+   </style>
+</head>
+<body>
+
+   <form>
+      <label for="uah">
+         <span>UAH</span>
+         <input id="uah" type="number" min="0" name="uah-currency" value="11">
+      </label>
+   
+      <label for="usd">
+         <span>USD</span>
+         <input id="usd" type="number" min="0" name="usd-currency">
+      </label>
+   </form>
+
+   <script src="js/script.js" defer></script>
+</body>
+</html>

@@ -9,12 +9,13 @@ class MenuCard {
     * @param {parentElem} parentElem parent element for cards
     * @param {classes} classes it`s possible to pass as many aditioanal css classes to card`s wrapper if you need that as possible
     */
-   constructor(title, text, srcImg, altTxt, price, parentElem, ...classes) {
+   constructor(title, text, srcImg, altTxt, price, typeCurrency, parentElem, ...classes) {
       this.title = title;
       this.text = text;
       this.srcImg = srcImg;
       this.altTxt = altTxt;
       this.price = price;
+      this.typeCurrency = typeCurrency;
       this.classes = classes;
       this.parentElem = document.querySelector(parentElem);
    }
@@ -25,21 +26,22 @@ class MenuCard {
       const HTTPMethod = 'GET';
       const httpRequest = new XMLHttpRequest();
       const url = `http://data.fixer.io/api/${endpoint}?access_key=${APIKey}`;
-      let test;
+      const ourBasicPrice = this.price;
+      const typeCurrency = this.typeCurrency;
 
       httpRequest.open(HTTPMethod, url);
-      httpRequest.responseType = 'json';
       httpRequest.send();
-      //httpRequest.addEventListener('load', getUAH);
-      //let promice = new Promise(function (resolve, reject) {
-      //   httpRequest.addEventListener('load', function () {
-      //      let newPrice = this.response.rates.UAH
-      //      resolve(newPrice);
-      //   });
-      //});
-      //promice.then(function (data) {
-      //   return data
-      //});
+      httpRequest.addEventListener('load', () => {
+         if (httpRequest.status === 200 && httpRequest.readyState === 4) {
+            const getPriceSpan = document.querySelector(`[data-price="${this.price}"] span`);
+            const parsed = JSON.parse(httpRequest.response);
+
+            if (typeCurrency !== 'UAH') {
+               const calc = parsed.rates['UAH'] * ourBasicPrice;
+               getPriceSpan.textContent = calc.toFixed(2);
+            }
+         }
+      });
    }
 
    render() {
@@ -61,7 +63,7 @@ class MenuCard {
             <div class="menu__item-divider"></div>
             <div class="menu__item-price">
                <div class="menu__item-cost">Цена:</div>
-               <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+               <div class="menu__item-total" data-price='${this.price}'><span>${this.price}</span> грн/день</div>
             </div>
          `;
 

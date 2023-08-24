@@ -16,6 +16,7 @@ window.addEventListener("DOMContentLoaded", () => {
       'img/tabs/vegy.jpg',
       'vegy',
       229,
+      'UAH',
       '.menu__field .container'
    ).render();
 
@@ -24,6 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
       'img/tabs/elite.jpg',
       'elite',
       550,
+      'UAH',
       '.menu__field .container'
    ).render();
 
@@ -31,9 +33,11 @@ window.addEventListener("DOMContentLoaded", () => {
    const menuLean = new MenuCard('Меню "Постное"',
       'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.', 'img/tabs/post.jpg',
       'lean',
-      430,
+      30,
+      'USD',
       '.menu__field .container'
    );
 
    menuLean.render();
+   menuLean.exchangeToUAH();
 });

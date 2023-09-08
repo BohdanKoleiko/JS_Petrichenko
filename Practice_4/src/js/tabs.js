@@ -1,7 +1,10 @@
 const tabs = function () {
    const tabs = document.querySelectorAll('.tabheader__item');
-   const tabsParent = document.querySelector('.tabheader__items');
    const tabsContent = document.querySelectorAll('.tabcontent');
+
+   // потрібно для другого варіанту навішування лінків
+   const tabsWrapper = document.querySelector('.tabheader__items');
+
 
    const hideTabContent = function () {
       tabsContent.forEach(item => {
@@ -25,7 +28,20 @@ const tabs = function () {
    hideTabContent();
    showTabContent();
 
-   tabsParent.addEventListener('click', (event) => {
+
+   // В цьому варіанті я навішую лісенер на кожну лінку
+   //if (tabs) {
+   //   tabs.forEach((tab, i) => {
+   //      tab.addEventListener("click", () => {
+   //         hideTabContent();
+   //         showTabContent(i);
+   //      });
+   //   });
+   //}
+
+
+   // В цьому варіанті я навішую лісенер тільки на врапер лінків
+   tabsWrapper.addEventListener('click', (event) => {
       const target = event.target;
 
       if (target && target.classList.contains('tabheader__item')) {
@@ -36,7 +52,6 @@ const tabs = function () {
             }
          });
       }
-
    });
 }
 

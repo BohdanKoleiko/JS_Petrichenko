@@ -63,3 +63,16 @@ a {
 .show {
    display: block;
 }
+
+.message {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: calc(100% - 80px);
+   height: calc(100% - 50px);
+   position: absolute;
+   top: 12%;
+   left: 50%;
+   background: white;
+   transform: translateX(-50%);
+}

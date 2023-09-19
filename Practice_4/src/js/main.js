@@ -4,11 +4,12 @@ import tabs from "./tabs";
 import timeCounter from "./timeCounter";
 import modal from "./modal";
 import MenuCard from "./use-constructor(classes)";
+import proccessingForms from "./processingForms";
 
 window.addEventListener("DOMContentLoaded", () => {
    tabs();
    timeCounter();
-   //modal();
+   modal();
 
    new MenuCard(
       'Меню "Фитнес"',
@@ -40,4 +41,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
    menuLean.render();
    menuLean.exchangeToUAH();
+
+   // Forms
+   const forms = document.querySelectorAll('form');
+
+   forms.forEach(form => {
+      proccessingForms(form);
+   });
 });

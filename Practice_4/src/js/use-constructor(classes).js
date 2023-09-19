@@ -20,28 +20,50 @@ class MenuCard {
       this.parentElem = document.querySelector(parentElem);
    }
 
+   // Цей метод реалізований за допомогою AJAX тухнології
+   //exchangeToUAH() {
+   //   const APIKey = 'f33b579dee802eeeff591f3e164ca910';
+   //   const endpoint = 'latest';
+   //   const HTTPMethod = 'GET';
+   //   const httpRequest = new XMLHttpRequest();
+   //   const url = `http://data.fixer.io/api/${endpoint}?access_key=${APIKey}`;
+   //   const ourBasicPrice = this.price;
+   //   const typeCurrency = this.typeCurrency;
+
+   //   httpRequest.open(HTTPMethod, url);
+   //   httpRequest.send();
+   //   httpRequest.addEventListener('load', () => {
+   //      if (httpRequest.status === 200 && httpRequest.readyState === 4) {
+   //         const getPriceSpan = document.querySelector(`[data-price="${this.price}"] span`);
+   //         const parsed = JSON.parse(httpRequest.response);
+
+   //         if (typeCurrency !== 'UAH') {
+   //            const calc = parsed.rates['UAH'] * ourBasicPrice;
+   //            getPriceSpan.textContent = calc.toFixed(2);
+   //         }
+   //      }
+   //   });
+   //}
+
+   // Цей метод реалізований за допомогою промісов. Результат той самий, а коду менше.
    exchangeToUAH() {
-      const APIKey = 'f33b579dee802eeeff591f3e164ca910';
-      const endpoint = 'latest';
-      const HTTPMethod = 'GET';
-      const httpRequest = new XMLHttpRequest();
-      const url = `http://data.fixer.io/api/${endpoint}?access_key=${APIKey}`;
       const ourBasicPrice = this.price;
       const typeCurrency = this.typeCurrency;
 
-      httpRequest.open(HTTPMethod, url);
-      httpRequest.send();
-      httpRequest.addEventListener('load', () => {
-         if (httpRequest.status === 200 && httpRequest.readyState === 4) {
-            const getPriceSpan = document.querySelector(`[data-price="${this.price}"] span`);
-            const parsed = JSON.parse(httpRequest.response);
+      const APIKey = 'f33b579dee802eeeff591f3e164ca910';
+      const endpoint = 'latest';
 
+      fetch(`http://data.fixer.io/api/${endpoint}?access_key=${APIKey}`)
+         .then(request => request.json())
+         .then(json => {
             if (typeCurrency !== 'UAH') {
-               const calc = parsed.rates['UAH'] * ourBasicPrice;
-               getPriceSpan.textContent = calc.toFixed(2);
+               const calc = json.rates['UAH'] * ourBasicPrice;
+
+               document.querySelector(`[data-price="${this.price}"] span`)
+                  .textContent = calc.toFixed(2);
             }
-         }
-      });
+         })
+         .catch(() => console.log('Something go wrong'));
    }
 
    render() {

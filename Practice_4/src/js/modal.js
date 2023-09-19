@@ -1,3 +1,5 @@
+'use strict'
+
 const modal = function () {
    const modal = document.querySelector('.modal');
    const modalCloseBtn = document.querySelector('[data-modal-close]');

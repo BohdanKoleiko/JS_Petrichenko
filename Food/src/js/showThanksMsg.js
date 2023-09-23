@@ -4,7 +4,7 @@ function showThanksMsg(div, message) {
    const modal = document.querySelector('.modal');
    const html = document.documentElement;
 
-   div.textContent = message;
+   div.innerHTML = message;
 
    setTimeout(() => {
       div.remove();
@@ -13,7 +13,7 @@ function showThanksMsg(div, message) {
          modal.style.display = 'none';
          html.style.overflow = 'visible';
       }
-   }, 2000);
+   }, 3000);
 }
 
 export default showThanksMsg;

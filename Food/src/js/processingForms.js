@@ -1,9 +1,35 @@
 'use strict'
 import showThanksMsg from "./showThanksMsg";
 
-function proccessingForms(form) {
+export const getData = async function (url) {
+   const response = await fetch(url);
+
+   if (!response.ok) {
+      throw new Error(`Could not fetch ${url}, status: ${response.status}`);
+   }
+
+   return response.json()
+}
+
+const postData = async function (url, data) {
+   const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+         'Content-type': 'application/json',
+      },
+      body: data,
+   });
+
+   if (response.ok) {
+      return response
+   } else {
+      throw new Error(`Could not fetch: ${url}, status: ${response.status}`)
+   }
+}
+
+export function proccessingForms(form) {
    const message = {
-      loading: "Завантаження",
+      loading: "<img class='loading' src='img/arrow-loading.svg' alt='img that shows us a loading proces'>",
       success: "Дякую, скоро ми з вами зв'яжемся",
       failure: 'Упс, щось зламалося'
    }
@@ -16,11 +42,11 @@ function proccessingForms(form) {
       form.append(div);
 
       const formData = new FormData(form);
-      const parsFormData = {};
-      formData.forEach(function (value, key) {
-         parsFormData[key] = value;
-      });
-      const jsonFormData = JSON.stringify(parsFormData);
+      //const parsFormData = {};
+      //formData.forEach(function (value, key) {
+      //   parsFormData[key] = value;
+      //});
+      const jsonFormData = JSON.stringify(Object.fromEntries(formData.entries()));
 
       showThanksMsg(div, message.loading);
 
@@ -40,15 +66,10 @@ function proccessingForms(form) {
       //});
 
       // Using Fetch API
-      fetch('servers.php', {
-         method: 'POST',
-         headers: {
-            'Content-type': 'application/json',
-         },
-         body: jsonFormData,
-      })
-         .then(data => {
-            if (data.status === 200) {
+
+      postData('http://localhost:3000/requests', jsonFormData)
+         .then(response => {
+            if (response.status === 200 || response.status === 201) {
                showThanksMsg(div, message.success);
             }
          })
@@ -60,5 +81,3 @@ function proccessingForms(form) {
          })
    });
 }
-
-export default proccessingForms;

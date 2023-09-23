@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       circle.style.top = `${cy}%`;
       circle.style.left = `${cx}%`;
 
-      return new Promise(resolve => {
+      return new Promise((resolve, reject) => {
          setTimeout(() => {
             circle.style.width = `${radius}px`;
             circle.style.height = `${radius}px`;

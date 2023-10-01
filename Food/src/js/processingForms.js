@@ -78,6 +78,6 @@ export function proccessingForms(form) {
          })
          .finally(() => {
             form.reset();
-         })
+         });
    });
 }

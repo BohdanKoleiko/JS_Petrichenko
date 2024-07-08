@@ -5,11 +5,13 @@ import timeCounter from "./timeCounter";
 import modal from "./modal";
 import MenuCard from "./use-constructor(classes)";
 import proccessingForms from "./processingForms";
+import slider from "./slider";
 
 window.addEventListener("DOMContentLoaded", () => {
    tabs();
    timeCounter();
    modal();
+   slider();
 
    new MenuCard(
       'Меню "Фитнес"',

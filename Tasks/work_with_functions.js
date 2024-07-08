@@ -38,3 +38,26 @@ function getMathResult(base, countBase) {
 console.log(getMathResult(5, 0));
 // ------------
 
+
+"use strict"
+
+function printerError(s) {
+   const aprovedLetters = "abcdefghijklm";
+   let errors = 0;
+
+   for (let i = 0; i < s.length; i++) {
+      if (aprovedLetters.indexOf(s[i]) < 0) {
+         errors++
+      }
+   }
+
+   return `${errors}/${s.length}`;
+}
+
+const firstString = "aaabbbbhaijjjm";
+const secondString = "aaaxbbbbyyhwawiwjjjwwm";
+
+const firstCheck = printerError(firstString);
+const secondCheck = printerError(secondString);
+
+console.log(firstCheck, secondCheck);

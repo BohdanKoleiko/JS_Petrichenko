@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Practice 1</title>
+
+      <style>
+         *,
+         *::before,
+         *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+         }
+
+         h1 {
+            text-align: center;
+            margin: 50px 0 20px 0;
+         }
+
+         button {
+            display: block;
+            margin: 0 auto 50px;
+            background-color: transparent;
+            border: 1px solid gray;
+            border-radius: 10px;
+            padding: 8px 12px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 3px 3px 5px 0px #c2c2c2;
+            transition: box-shadow 100ms;
+         }
+         button:active {
+            box-shadow: 0px 0px 0px 0px #c2c2c2;
+         }
+
+         table,
+         th,
+         td {
+            border: 1px solid;
+            border-collapse: collapse;
+         }
+
+         table {
+            width: 50%;
+            margin: 0 auto;
+         }
+
+         table tr th:first-child {
+            width: 60%;
+         }
+
+         table th,
+         table td {
+            padding: 5px;
+         }
+
+         table th {
+            font-size: 18px;
+         }
+
+         table th:first-child {
+            text-align: left;
+         }
+      </style>
+   </head>
+   <body>
+      <main>
+         <h1>Practice 1</h1>
+
+         <button id="activate-asking" type="button">Ask me 'bout movies</button>
+
+         <table>
+            <tr>
+               <th>Movie</th>
+               <th>Mark</th>
+            </tr>
+         </table>
+      </main>
+
+      <script src="./index.js"></script>
+   </body>
+</html>
